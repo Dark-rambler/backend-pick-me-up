@@ -5,13 +5,15 @@ const admin = require('firebase-admin');
 const db = admin.firestore();
 
 //Para añadir
-router.post('/api/products', async (req, res) => {
+router.post('/api/products', async (req, res)  => {
     try {
-        const {Nombre, Descripcion} = req.body;
+        const {Nombre, Descripcion,Tipo,Imagen} = req.body;
 
         await db.collection("products").add({
             Nombre,
-            Descripcion
+            Descripcion,
+            Tipo,
+            Imagen
         });
         return res.status(204).json();
     } catch (error) {
