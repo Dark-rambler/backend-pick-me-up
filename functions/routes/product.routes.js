@@ -1,11 +1,12 @@
 const { Router } = require('express')
 const router = Router()
 const admin = require('firebase-admin');
-
+var cors=require('cors')
 const db = admin.firestore();
 
 //Para añadir
-router.post('/api/products', async (req, res)  => {
+router.post('/api/products', async (req, res)=>{
+   
     try {
         const {Nombre, Descripcion,Tipo,Imagen} = req.body;
 
@@ -20,6 +21,7 @@ router.post('/api/products', async (req, res)  => {
         console.log(error);
         return res.status(500).send(error);
     }
+   
 });
 
 //Para obtener
